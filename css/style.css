@@ -1,0 +1,88 @@
+body {
+    text-align: center;
+    height: 100%;
+    margin: 0;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+}
+
+h1 {
+    position: relative;
+    top: 30px;
+}
+
+#princess-score, #blue-score, #green-score, #orange-score, #heart-score, #key-score {
+    position: absolute;
+    top: 10px;
+    left: 70px;
+}
+
+p {
+    font-family: sans-serif;
+    padding: 20px;
+    text-align: left;
+}
+
+#horizontal-scroll {
+    width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    background: url(http://pacman.com/en/wp-content/themes/PACMAN/images/uploads/background_pattern.gif);
+    -webkit-animation: backgroundScroll 20s linear infinite;
+    animation: backgroundScroll 20s linear infinite;
+}
+
+@-webkit-keyframes backgroundScroll {
+    from {background-position: 0 0;}
+    to {background-position: -400px 0;}
+}
+
+@keyframes backgroundScroll {
+    from {background-position: 0 0;}
+    to {background-position: -400px 0;}
+}
+
+aside.left, aside.right {
+    position: absolute;
+    width: 200px;
+    height: 535px;
+    display: block;
+    background: black;
+
+    margin-top: 50px;
+}
+aside.left {
+    left: 250px;
+}
+
+aside.right {
+    right: 250px;
+
+}
+ul li {
+    list-style: none;
+    position: relative;
+}
+img {
+    width: 40px;
+    position: relative;
+    left: -70px;
+}
+audio {
+    position: absolute;
+    bottom: 40px;
+}
+
+.gem.blue {
+    background: url('images/Gem-Blue.png') no-repeat top left;
+}
+
+.gem.green {
+    background: url('images/Gem Green.png') no-repeat top left;
+}
+
+.gem.yellow {
+    background: url('images/Gem Orange.png') no-repeat top left;
+}
