@@ -1,3 +1,6 @@
+frontend-nanodegree-arcade-game
+===============================
+![alt tag](ArcadeGameLH.png)
 # Arcade Games are back
 
 Welcome to the good old Arcade Game.
