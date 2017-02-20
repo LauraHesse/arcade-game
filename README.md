@@ -1,7 +1,20 @@
 frontend-nanodegree-arcade-game
 ===============================
-![alt tag](ArcadeGameLH.png)
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+# Arcade Games are back
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+Welcome to the good old Arcade Game.
+Inspired by my childhood game Tetris, I have included nostalgic elements here too.
+Enjoy the music and moving background image.
+
+# How to play
+
+Use Left, Right, Up and Down arrow keys to navigate in the screen.
+To WIN the game you need to go to the water 5 times. You will LOSE if you'll be hit 5 times.
+Collect each gem for extra kick.
+
+# Reference
+Music taken from here: https://archive.org/details/TetrisThemeMusic
+Background image taken from here: http://pacman.com/en/wp-content/themes/PACMAN/images/uploads/background_pattern.gif
+
+Enjoy!
