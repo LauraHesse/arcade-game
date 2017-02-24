@@ -13,6 +13,7 @@
         <h1>Welcome to Arcade Game</h1>
     </header>
 
+
     <aside class="left">
         <h3>Rules</h3>
         <p>Your goal is simple, move across the bricks towards the water without getting hit by the BUGS.</p> <p>Your score increases by one point, collect all the GEMS.</p>   <p>Press arrows 'Left', 'Right', 'Up' and 'Back' to navigate.</p> <p>GAME ON!</p>
@@ -29,6 +30,10 @@
             <li><img src="images/Key.png" alt="Key"><h2 id="key-score">0</h2></li>
         </ul>
     </aside>
+
+    <div class="game-over" id="game-over"><h1></h1>
+        <a href="#" onClick="window.location.reload();return false;">Restart</a>
+    </div>
     <!-- Simple audio playback -->
 <audio controls loop
   src="Tetris.mp3"

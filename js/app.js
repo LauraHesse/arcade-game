@@ -48,7 +48,9 @@ function Player (x, y) {
     this.h = 75;
     this.sprite = 'images/char-princess-girl.png';
     this.score = 0;
-    this.id = document.getElementById("princess-score");
+    this.id = document.getElementById('princess-score');
+    this.screenBg = document.getElementById('game-over');
+    this.screen = document.getElementById('game-over').firstChild;
 }
 
 
@@ -62,9 +64,12 @@ Player.prototype.incrementScore = function() {
     this.score += 1;
     this.id.innerHTML = this.score;
 
-    if (this.score === 6) {
-        alert ("You Won! :)");
-        location.reload();
+    if (this.score === 1) {
+        this.screenBg.style.visibility = "visible";
+        this.screen.style.display = "block";
+        this.screen.innerHTML = "You won!";
+        location.pause();
+
     }
 };
 
@@ -73,16 +78,18 @@ Player.prototype.decrementScore = function() {
     this.score -=1;
     this.id.innerHTML = this.score;
 
-    if (this.score === -6) {
-        alert ("You Lost! Sorry :(");
-        location.reload();
+    if (this.score === -1) {
+        this.screenBg.style.visibility = "visible";
+        this.screen.style.display = "block";
+        this.screen.innerHTML = "Game Over";
+        location.pause();
     }
 
 };
 
 Player.prototype.update = function(dt) {
 
-
+    this.screenBg.style.visibility = "hidden";
     // player is not allowed to go beyond canvas walls
     if ( this.x <= -40 || this.y >= 383 || this.x >= 401) {
         this.reset();
@@ -152,6 +159,8 @@ var gemImages = ['images/Gem-Blue.png', 'images/Gem Orange.png', 'images/Gem Gre
     this.w = w;
     this.h = h;
     this.sprite = gemImages;
+
+    this.go = true;
 }
 
 // Render the gem on the screen
@@ -168,6 +177,22 @@ Gem.prototype.remove = function() {
      this.y = -1000;
 
 };
+
+Gem.prototype.update = function() {
+    var myVar;
+
+    if ( this.go === true ) {
+        myVar = setTimeout(alertFunc, 3000);
+        console.log(myVar);
+    } else {
+        this.go = false;
+    }
+
+    function alertFunc() {
+      alert("Hello!");
+  }
+};
+
 
 var gem = new Gem(120, 355, 60, 100);
 

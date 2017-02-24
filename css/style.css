@@ -44,6 +44,14 @@ p {
     to {background-position: -400px 0;}
 }
 
+canvas {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
 aside.left, aside.right {
     position: absolute;
     width: 200px;
@@ -51,14 +59,22 @@ aside.left, aside.right {
     display: block;
     background: black;
 
+    margin-left: auto;
+    margin-right: auto;
+
     margin-top: 50px;
+
+
 }
 aside.left {
-    left: 250px;
+    left: 0;
+    right: 740px;
+
 }
 
 aside.right {
-    right: 250px;
+    left: 0;
+    right: -740px;
 
 }
 ul li {
@@ -72,17 +88,60 @@ img {
 }
 audio {
     position: absolute;
-    bottom: 40px;
+    top: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    left: -200px;
+    right: 0;
 }
 
-.gem.blue {
-    background: url('images/Gem-Blue.png') no-repeat top left;
+.closing-screen {
+    display: none;
+    width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    background: black;
+    opacity: 0.9;
+    font-size: 30px;
+    z-index: 3;
 }
 
-.gem.green {
-    background: url('images/Gem Green.png') no-repeat top left;
+#game-over {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: 2;
+    background: black;
+    opacity: .9;
 }
 
-.gem.yellow {
-    background: url('images/Gem Orange.png') no-repeat top left;
+#game-over h1{
+    font-family: 'Press Start 2P', cursive;
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    top: 50%;
+    left: 50%;
+    margin-left: -110px; /* margin is -0.5 * dimension */
+    margin-top: -70px;
+    z-index: 3;
+    font-size: 60px;
+    animation: blinker 1s linear infinite;
+    text-align: center;
+
+}
+
+@keyframes blinker {
+  50% { opacity: 0; }
+}
+
+#game-over a {
+    font-family: sans-serif;
+    top: 60%;
+    position: absolute;
 }
