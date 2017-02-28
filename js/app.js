@@ -165,8 +165,10 @@ var gemImages = ['images/Gem-Blue.png', 'images/Gem Orange.png', 'images/Gem Gre
 
 // Render the gem on the screen
 Gem.prototype.render = function() {
+
     var i =  Math.floor( Math.random() * this.sprite.length );
     ctx.drawImage(Resources.get(this.sprite[i]), this.x, this.y, this.w, this.h);
+    console.log(i);
 
 };
 
@@ -179,23 +181,24 @@ Gem.prototype.remove = function() {
 };
 
 Gem.prototype.update = function() {
-    var myVar;
+    var that = this;
 
-    if ( this.go === true ) {
-        myVar = setTimeout(alertFunc, 3000);
-        console.log(myVar);
-    } else {
+    if (this.go) {
         this.go = false;
+        setTimeout(alertFunc, 3000);
     }
 
     function alertFunc() {
-      alert("Hello!");
-  }
+      console.log("Hello!");
+      gem.render();
+
+      that.go = true;
+    }
 };
 
 
 var gem = new Gem(120, 355, 60, 100);
-
+//var gem = new Gem ({x: gem.x, y: gem.y, width:70, height:100});
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
