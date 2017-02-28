@@ -63,7 +63,7 @@ Player.prototype.reset = function() {
 Player.prototype.incrementScore = function() {
 
     this.score += 1;
-    this.princessScore.innerHTML = this.score;
+    this.blueGem.innerHTML = this.score;
 
     if (this.score === 5) {
         this.screenBg.style.visibility = "visible";
@@ -76,8 +76,7 @@ Player.prototype.incrementScore = function() {
 
 Player.prototype.decrementScore = function() {
 
-    this.score -=1;
-    this.princessScore.innerHTML = this.score;
+    this.princessScore.innerHTML = this.score -=1;
 
     if (this.score === -5) {
         this.screenBg.style.visibility = "visible";
@@ -97,7 +96,7 @@ Player.prototype.update = function(dt) {
 
     } else if ( this.y <= 0 ) {
         // players acctual score
-        this.incrementScore();
+        this.princessScore.innerHTML = this.score += 1;
         this.reset();
     }
 
