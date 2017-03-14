@@ -1,3 +1,13 @@
+var Character = function(x, y) {
+    this.x = x;
+    this.y = y;
+};
+
+Character.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+
+};
+
 // Enemies our player must avoid
 function Enemy (x, y, speed) {
     // Variables applied to each of our instances go here,
@@ -6,8 +16,7 @@ function Enemy (x, y, speed) {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     // Update the enemy's position, required method for game
-    this.x = x;
-    this.y = y;
+    Character.call(this, x, y);
     this.w = 50;
     this.h = 50;
     this.speed = speed;
@@ -30,10 +39,8 @@ Enemy.prototype.update = function(dt) {
 };
 
 // Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-
-};
+Enemy.prototype = Object.create(Character.prototype);
+Enemy.prototype.constructor = Enemy.constructor;
 
 
 // Now write your own player class
@@ -42,8 +49,7 @@ Enemy.prototype.render = function() {
 
 function Player (x, y) {
 
-    this.x = x;
-    this.y = y;
+    Character.call(this, x, y);
     this.w  = 50;
     this.h = 75;
     this.sprite = 'images/char-princess-girl.png';
@@ -120,27 +126,29 @@ Player.prototype.playSoundGem = function() {
     audio.play();
 };
 
+var TILE_WIDTH = 100, TILE_HEIGHT = 80;
+
 Player.prototype.handleInput = function(direction) {
     if (direction === 'up') {
-      this.y -= 80;
+      this.y -= TILE_HEIGHT;
     }
     if (direction === 'down') {
-      this.y += 80;
+      this.y += TILE_HEIGHT;
     }
     if (direction === 'left') {
-      this.x -= 100;
+      this.x -= TILE_WIDTH;
     }
     if (direction === 'right') {
-      this.x += 100;
+      this.x += TILE_WIDTH;
     }
 };
 
 Player.prototype.collision = function() {
     for( var i = 0; i < allEnemies.length; i++){
-        if (player.x < allEnemies[i].x + allEnemies[i].w &&
-              player.x + player.w > allEnemies[i].x &&
-              player.y < allEnemies[i].y + allEnemies[i].h &&
-              player.h + player.y > allEnemies[i].y) {
+        if (this.x < allEnemies[i].x + allEnemies[i].w &&
+              this.x + this.w > allEnemies[i].x &&
+              this.y < allEnemies[i].y + allEnemies[i].h &&
+              this.h + this.y > allEnemies[i].y) {
               // collision detected!
               this.decrementScore();
               this.playSound();
@@ -149,10 +157,10 @@ Player.prototype.collision = function() {
     }
 
 
-        if (player.x < gem.x + gem.w &&
-              player.x + player.w > gem.x &&
-              player.y < gem.y + gem.h &&
-              player.h + player.y > gem.y) {
+        if (this.x < gem.x + gem.w &&
+              this.x + this.w > gem.x &&
+              this.y < gem.y + gem.h &&
+              this.h + this.y > gem.y) {
                 //remove the gem
                 gem.remove();
                 this.incrementScore();
@@ -165,8 +173,7 @@ var gemImages = ['images/Gem-Blue.png', 'images/Gem Orange.png', 'images/Gem Gre
 
 // Gem class
  function Gem (x, y, w, h, sprite) {
-    this.x = x;
-    this.y = y;
+    Character.call(this, x, y);
     this.w = w;
     this.h = h;
     this.sprite = 'images/Gem-Blue.png';
