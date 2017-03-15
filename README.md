@@ -9,7 +9,7 @@ Enjoy the music and moving background image.
 
 ## How to play
 
-Use Left, Right, Up and Down arrow keys to navigate in the screen.
+Open index.html in your browser, the game will automatically start. Use Left, Right, Up and Down arrow keys to navigate in the screen.
 To WIN the game you need to go to the water 5 times. You will LOSE if you'll be hit 5 times.
 Collect each gem for extra kick.
 
