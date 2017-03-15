@@ -5,7 +5,6 @@ var Character = function(x, y) {
 
 Character.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-
 };
 
 // Enemies our player must avoid
@@ -23,6 +22,9 @@ function Enemy (x, y, speed) {
     this.sprite = 'images/enemy-bug.png';
 
 }
+// Draw the enemy on the screen, required method for game
+Enemy.prototype = Object.create(Character.prototype);
+Enemy.prototype.constructor = Enemy.constructor;
 
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
@@ -38,9 +40,6 @@ Enemy.prototype.update = function(dt) {
 
 };
 
-// Draw the enemy on the screen, required method for game
-Enemy.prototype = Object.create(Character.prototype);
-Enemy.prototype.constructor = Enemy.constructor;
 
 
 // Now write your own player class
@@ -60,6 +59,9 @@ function Player (x, y) {
     this.screen = document.getElementById('game-over').firstChild;
 }
 
+// Draw the player on the screen, required method for game
+Player.prototype = Object.create(Character.prototype);
+Player.prototype.constructor = Player.constructor;
 
 Player.prototype.reset = function() {
     this.x = 200;
@@ -76,7 +78,6 @@ Player.prototype.incrementScore = function() {
         this.screen.style.display = "block";
         this.screen.innerHTML = "You won!";
         location.pause();
-
     }
 };
 
@@ -110,17 +111,6 @@ Player.prototype.update = function(dt) {
 
 };
 
-
-// Draw the player on the screen, required method for game
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
-Player.prototype.playSound = function() {
-    var audio = new Audio('images/Frying Pan Hit.mp3');
-    audio.play();
-};
-
 Player.prototype.playSoundGem = function() {
     var audio = new Audio('images/Metroid_Door-Brandino.mp3');
     audio.play();
@@ -151,7 +141,6 @@ Player.prototype.collision = function() {
               this.h + this.y > allEnemies[i].y) {
               // collision detected!
               this.decrementScore();
-              this.playSound();
               this.reset();
   }
     }
@@ -169,7 +158,7 @@ Player.prototype.collision = function() {
 
 };
 
-var gemImages = ['images/Gem-Blue.png', 'images/Gem Orange.png', 'images/Gem Green.png', 'images/Key.png', 'images/Heart.png'];
+//var gemImages = ['images/Gem-Blue.png', 'images/Gem Orange.png', 'images/Gem Green.png', 'images/Key.png', 'images/Heart.png'];
 
 // Gem class
  function Gem (x, y, w, h, sprite) {
@@ -177,16 +166,14 @@ var gemImages = ['images/Gem-Blue.png', 'images/Gem Orange.png', 'images/Gem Gre
     this.w = w;
     this.h = h;
     this.sprite = 'images/Gem-Blue.png';
-
     this.go = true;
 }
 
 // Render the gem on the screen
 Gem.prototype.render = function() {
-    //var i =  Math.floor( Math.random() * this.sprite.length );
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y, this.w, this.h);
-
 };
+
 
 Gem.prototype.remove = function() {
      console.log("remove gem");
