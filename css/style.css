@@ -16,7 +16,10 @@ h1 {
     top: 10px;
     left: 70px;
 }
-
+/*It is considered bad practice to use IDs in your CSS files. 
+There are no situations where IDs provide a benefit over classes. 
+If you need to use a unique name for an element, use a class. 
+(The only benefit IDs provide is speed, and is only beneficial on pages with thousands of similar elements.)*/
 p {
     font-family: sans-serif;
     padding: 20px;
